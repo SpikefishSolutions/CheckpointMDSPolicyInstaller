@@ -1,20 +1,32 @@
+# import checkpoint api. See
+# https://github.com/CheckPointSW/cp_mgmt_api_python_sdk
+# the first time this script is run it will check the finger print
+# of the api url and prompt yes/no to save a finger print to a file.
+
 from cpapi import APIClient, APIClientArgs
 import time
 import json
 import pprint
 import csv
+# output will be sent to this file 
+# output file will be overwritten (not appended)
 output='policy_install_status.txt'
 csvfile = open(output, "w") 
 # clobber output file.
 csvfile.seek(0)
 csvwriter = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
+# These are the headers for the csv file.
 csvwriter.writerow(['Domain','Policy','Target','Gateway','Message','ErrLevel'])
+
+api_server = 'SomeHost'
+username   = 'SomeUsername'
+password   = 'SomePassword'
+
+# this is basically just used to help 
+# format json output should you want to see it
 pp = pprint.PrettyPrinter(indent=4)
 
 def main():
-    api_server='SomeHost'
-    username = 'SomeUsername'
-    password = 'SomePassword'
 
     #client_args = APIClientArgs(server=api_server,http_debug_level=5)
     client_args = APIClientArgs(server=api_server)

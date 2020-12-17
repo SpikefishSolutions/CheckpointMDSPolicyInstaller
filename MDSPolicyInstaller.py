@@ -60,7 +60,7 @@ def main():
                      policy_installation_targets =  policy_package.data["installation-targets"]
                      if isinstance(policy_installation_targets, str):
                          pass
-                         #print("Spikking targets set to all Domain: {} Policy: {} install target: {}".format(
+                         #print("Skipping targets set to all Domain: {} Policy: {} install target: {}".format(
                          #    domain_name, policy_package_name, policy_installation_targets))
                      else:
                          for policy_installation_target in policy_installation_targets:
